@@ -1,0 +1,58 @@
+<style>
+    .glyphicon.spinning {
+        animation: spin 1s infinite linear;
+        -webkit-animation: spin2 1s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin2 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Shopping Cart</h3>
+    </div>
+    <div class="panel-body">
+        <div ng-if="selectedFiles.length == 0">
+            Your shopping cart is empty!
+        </div>
+        <table class="table table-hover table-condensed" ng-if="selectedFiles.length > 0">
+            <thead>
+            <tr>
+                <th>Module</th>
+                <th>Filename</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="file in selectedFiles | orderBy:['module','filename']">
+                <td>{{ file.module }}</td>
+                <td>{{ file.filename }}</td>
+                <td>
+                    <span class="glyphicon glyphicon-remove" ng-click="removeFile(file.filename)"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary btn-block" ng-disabled="isDownloading"
+                ng-if="selectedFiles.length > 0" ng-click="triggerDownload()">
+            <span class="glyphicon glyphicon-refresh spinning" ng-if="isDownloading"></span>
+            Download
+        </button>
+    </div>
+</div>

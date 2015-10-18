@@ -1,0 +1,93 @@
+{% raw %}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="nusexamApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.2/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="/static/js/jszip-utils.min.js"></script>
+    <script src="/static/js/FileSaver.min.js"></script>
+
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/controllers.js"></script>
+    <script src="/static/js/services.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+
+<body ng-controller="MainCtrl">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">NUSExam</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#cart">
+                        Shopping Cart
+                        <span class="badge">{{ selectedFiles.length }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="progress" ng-if="myModules.length == 0">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+                    IVLE is thinking...
+                </div>
+            </div>
+            <div class="list-group">
+                <button type="button" class="list-group-item" ng-if="myModules.length > 0"
+                        ng-repeat="module in myModules"
+                        ng-click="selectModule(module)">
+                    {{ module }} {{ moduleNames[module] }}
+                    <!--<span class="badge">
+                        {{ moduleFiles[module].length }}
+                    </span>-->
+                </button>
+            </div>
+            <input type="text" class="form-control input-sm" id="moduleInput"
+                   placeholder="Or search module here..." ng-model="typedModule"
+                   typeahead-on-select="onSearchModule($item, $model, $label)"
+                   uib-typeahead="mod as mod.code+' '+mod.title for mod in allModules | filter:$viewValue | limitTo: 8">
+        </div>
+        <div class="col-sm-8" ng-view>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endraw %}
