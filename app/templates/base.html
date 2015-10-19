@@ -71,14 +71,9 @@
                 </div>
             </div>
             <div class="list-group">
-                <button type="button" class="list-group-item" ng-if="myModules.length > 0"
-                        ng-repeat="module in myModules"
-                        ng-click="selectModule(module)">
+                <a href="#/module/{{ module }}" class="list-group-item" ng-repeat="module in myModules">
                     {{ module }} {{ moduleNames[module] }}
-                    <!--<span class="badge">
-                        {{ moduleFiles[module].length }}
-                    </span>-->
-                </button>
+                </a>
             </div>
             <input type="text" class="form-control input-sm" id="moduleInput"
                    placeholder="Or search module here..." ng-model="typedModule"
