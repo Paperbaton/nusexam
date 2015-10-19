@@ -3,14 +3,6 @@
         <h3 class="panel-title">{{ selectedModule }} {{ moduleNames[selectedModule] }}</h3>
     </div>
     <div class="panel-body">
-        <div class="btn-group-vertical btn-block" role="group" ng-if="moduleFiles[selectedModule].length > 0">
-            <button type="button" class="btn btn-default btn-block"
-                    ng-repeat="filename in moduleFiles[selectedModule]"
-                    ng-class="{active: selectedFileNames.indexOf(filename) != -1}"
-                    ng-click="toggleFile(filename)">
-                {{ filename }}
-            </button>
-        </div>
 
         <button type="button" class="btn btn-primary btn-block"
                 ng-if="moduleFiles[selectedModule].length > 0"
@@ -28,5 +20,13 @@
             </div>
         </div>
     </div>
+    <ul class="list-group" ng-if="moduleFiles[selectedModule].length > 0">
+        <button type="button" class="list-group-item"
+                ng-repeat="filename in moduleFiles[selectedModule]"
+                ng-click="toggleFile(filename)">
+            {{ filename }}
+            <span class="badge" ng-if="selectedFileNames.indexOf(filename) != -1">Added</span>
+        </button>
+    </ul>
 </div>
 
