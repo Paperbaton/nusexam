@@ -29,4 +29,7 @@ def get_modules_list(token):
     #     modules_list.append({x: module[x] for x in ['CourseCode', 'ID', 'CourseName']})
     # for module in modules_list:
     #     module['CourseName'] = titlecase(module['CourseName'])
-    return [x['CourseCode'] for x in request.json()['Results']]
+    def parse_code(code):
+        return code.split('/')[0].strip()
+
+    return [parse_code(x['CourseCode']) for x in request.json()['Results']]
