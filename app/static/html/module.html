@@ -22,8 +22,10 @@
             No paper available for this module, sorry :(
         </div>
 
-        <div ng-if="moduleFiles[selectedModule] == undefined">
-            Loading...
+        <div class="progress" ng-if="moduleFiles[selectedModule] == undefined">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+                Loading...
+            </div>
         </div>
     </div>
 </div>
