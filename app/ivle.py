@@ -32,4 +32,4 @@ def get_modules_list(token):
     def parse_code(code):
         return code.split('/')[0].strip()
 
-    return [parse_code(x['CourseCode']) for x in request.json()['Results']]
+    return sorted(list(set([parse_code(x['CourseCode']) for x in request.json()['Results']])))
