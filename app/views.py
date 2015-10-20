@@ -57,7 +57,7 @@ def link(module_code):
 
 @app.route("/login/")
 def login():
-    return redirect(ivle.get_ivle_login_url(url_for('login_callback', _external=True)))  # , _scheme='https'
+    return redirect(ivle.get_ivle_login_url(url_for('login_callback', _external=True, _scheme='https')))
 
 
 @app.route("/login/callback/")
