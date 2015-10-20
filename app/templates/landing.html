@@ -1,11 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NUSExam makes downloading PYP from NUS Library not painful anymore.">
+
+    <title>NUSExam</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <style>
+
+        a,
+        a:focus,
+        a:hover {
+            color: #fff;
+        }
+
+        .btn-outline-inverse {
+            color: #fff;
+            background-color: transparent;
+            border-color: #fff;
+        }
+
+        .btn-outline-inverse:active,
+        .btn-outline-inverse:hover,
+        .btn-outline-inverse:focus {
+            background-color: #fff;
+            border-color: #fff;
+            text-shadow: none;
+            color: #00A8C6;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background-color: #00A8C6;
+        }
+
+        body {
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+        }
+
+        .site-wrapper {
+            display: table;
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+        }
+
+        .site-wrapper-inner {
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .cover-container {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .inner {
+            padding: 30px;
+        }
+
+        .masthead-brand {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .masthead-nav > li {
+            display: inline-block;
+        }
+
+        .masthead-nav > li + li {
+            margin-left: 20px;
+        }
+
+        .masthead-nav > li > a {
+            padding-right: 0;
+            padding-left: 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff; /* IE8 proofing */
+            color: rgba(255, 255, 255, .75);
+            border-bottom: 2px solid transparent;
+        }
+
+        .masthead-nav > li > a:hover,
+        .masthead-nav > li > a:focus {
+            background-color: transparent;
+            border-bottom-color: rgba(255, 255, 255, .25);
+        }
+
+        .masthead-nav > .active > a,
+        .masthead-nav > .active > a:hover,
+        .masthead-nav > .active > a:focus {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            .masthead-brand {
+                float: left;
+            }
+
+            .masthead-nav {
+                float: right;
+            }
+        }
+
+        .cover {
+            padding: 0 20px;
+        }
+
+        .cover .btn-lg {
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .mastfoot {
+            color: rgba(255, 255, 255, .8);
+        }
+
+        @media (min-width: 768px) {
+
+            .masthead {
+                position: fixed;
+                top: 0;
+            }
+
+            .mastfoot {
+                position: fixed;
+                bottom: 0;
+            }
+
+            .site-wrapper-inner {
+                vertical-align: middle;
+            }
+
+            .masthead,
+            .mastfoot,
+            .cover-container {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .masthead,
+            .mastfoot,
+            .cover-container {
+                width: 700px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<h1>landing!</h1>
-<a href="{{ url_for('base') }}">click me</a>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">NUSExam</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="/box/">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="inner cover">
+                <p class="lead">NUSExam makes it easy to download PYPs.</p>
+
+                <p class="lead">Add all you want to your cart, and get them all in a single zip file.</p>
+
+                <p class="lead">
+                    <a href="/box/" class="btn btn-lg btn-outline-inverse">Get Started</a>
+                </p>
+            </div>
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Available only to NUS students.</p>
+
+                    <p>Proudly brought to you by <a href="https://paperbaton.com">Paperbaton.com</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
