@@ -2,6 +2,7 @@ from app import app, api, storage, ivle
 
 from flask import session, abort, redirect, url_for, request, render_template, get_flashed_messages, flash
 from flask_restful import Resource
+from requests.exceptions import Timeout
 
 
 class Module(Resource):
@@ -63,7 +64,10 @@ def login():
 @app.route("/login/callback/")
 def login_callback():
     session['token'] = request.args.get('token', '')
-    session['user_id'] = ivle.get_user_id(session['token'])
+    try:
+        session['user_id'] = ivle.get_user_id(session['token'])
+    except Timeout:
+        return 'IVLE is not responding, please try again later'
     redirect_urls = get_flashed_messages()
     return redirect(redirect_urls[0] if len(redirect_urls) > 0 else url_for('base'))
 

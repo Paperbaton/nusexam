@@ -3,7 +3,7 @@ from app import app
 import requests
 
 IVLE_APIKEY = app.config['IVLE_APIKEY']
-IVLE_TIMEOUT = 60
+IVLE_TIMEOUT = 30
 
 
 def get_user_id(token):
