@@ -24,7 +24,8 @@ class MyModules(Resource):
 class LoginStatus(Resource):
     def get(self):
         user_id = session.get('user_id', '')
-        return {'login': bool(user_id), 'user_id': user_id}
+        token = session.get('token', '')
+        return {'login': bool(user_id), 'user_id': user_id, 'ivle_available': bool(token)}
 
 
 api.add_resource(Module, '/module/<string:module_code>')

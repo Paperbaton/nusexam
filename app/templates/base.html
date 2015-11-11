@@ -62,10 +62,13 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <div class="progress" ng-if="myModules.length == 0">
+            <div class="progress" ng-if="myModules.length == 0 && loginStatus.ivle_available">
                 <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%"></div>
             </div>
             <div class="list-group">
+                <li class="list-group-item disabled" ng-if="!(loginStatus.ivle_available)">
+                    Unable to get your modules :( <br> But you can search :)
+                </li>
                 <a href="#/module/{{ module }}" class="list-group-item" ng-repeat="module in myModules">
                     {{ module }} {{ moduleNames[module] }}
                 </a>

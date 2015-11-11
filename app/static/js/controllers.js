@@ -5,6 +5,7 @@ var nusexamControllers = angular.module('nusexamControllers', []);
 nusexamControllers.controller('MainCtrl', ['$scope', '$location', 'sharedData',
     function ($scope, $location, sharedData) {
         $scope.selectedFiles = sharedData.selectedFiles;
+        $scope.loginStatus = sharedData.loginStatus;
         $scope.myModules = sharedData.myModules;
         $scope.selectModule = function (module) {
             $location.path('/module/' + module);

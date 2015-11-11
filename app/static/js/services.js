@@ -9,12 +9,17 @@ nusexamServices.factory('sharedData', ['$http', function ($http) {
     var selectedFiles = [];
     var selectedFileNames = [];
     var moduleFiles = {};
+    var loginStatus = {};
 
     $http.get('/api/all_modules').then(function (response) {
         response.data.forEach(function (module) {
             allModules.push(module);
             moduleNames[module['code']] = module['title'];
         });
+    });
+
+    $http.get('/api/login_status').then(function (response) {
+        loginStatus['ivle_available'] = response.data['ivle_available'];
     });
 
     var loadMyModules = function () {
@@ -65,6 +70,7 @@ nusexamServices.factory('sharedData', ['$http', function ($http) {
         selectedFiles: selectedFiles,
         selectedFileNames: selectedFileNames,
         moduleFiles: moduleFiles,
+        loginStatus: loginStatus,
         loadModuleFiles: loadModuleFiles,
         loadMyModules: loadMyModules,
         addFileToCart: addFileToCart,
