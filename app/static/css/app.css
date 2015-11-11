@@ -1,5 +1,6 @@
 body {
     padding-top: 70px;
+    background: #F9F2E7;
 }
 
 .glyphicon-remove {
@@ -27,4 +28,26 @@ body {
     to {
         -webkit-transform: rotate(360deg);
     }
+}
+
+.navbar-inverse {
+    background-color: #00A8C6;
+    border-color: #00A8C6;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-inverse .badge {
+    color: #00A8C6;
+}
+
+.btn-success {
+    background-color: #8FBE00;
+    border-color: #8FBE00;
+}
+
+.badge {
+    background-color: #00A8C6;
 }

@@ -24,7 +24,7 @@
             </tr>
             </tbody>
         </table>
-        <button type="button" class="btn btn-primary btn-block" ng-disabled="isDownloading"
+        <button type="button" class="btn btn-success btn-block" ng-disabled="isDownloading"
                 ng-if="selectedFiles.length > 0" ng-click="triggerDownload()">
             <span class="glyphicon glyphicon-refresh spinning" ng-if="isDownloading"></span>
             {{ isDownloading ? 'Downloading' : 'Download' }}
