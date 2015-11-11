@@ -65,7 +65,7 @@ def login_oid():
 
 @oid.after_login
 def login_oid_succeed(resp):
-    session['user_id'] = resp.identity_url
+    session['user_id'] = resp.identity_url.rsplit('/')[-1]
     redirect_urls = get_flashed_messages()
     return redirect(redirect_urls[0] if len(redirect_urls) > 0 else url_for('base'))
 
