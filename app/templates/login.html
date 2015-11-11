@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NUSExam makes downloading PYP from NUS Library not painful anymore.">
+
+    <title>NUSExam</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+
+<body>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">NUSExam</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li><a href="/">Home</a></li>
+                            <li class="active"><a href="#">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="inner cover">
+                <p class="lead">Choose your login method:</p>
+            </div>
+            <div class="inner cover col-sm-6">
+                <p class="lead">
+                    <a href="/login/ivle/" class="btn btn-lg btn-outline-inverse">Use IVLE</a>
+                </p>
+
+                <p class="lead">We can get modules you have taken in this semester so you don't have to manually search
+                    them.</p>
+
+                <p class="lead">But IVLE is not stable :( When it does not respond, try OpenID on the right.</p>
+            </div>
+            <div class="inner cover col-sm-6">
+                <p class="lead">
+                    <a href="/login/openid/" class="btn btn-lg btn-outline-inverse">Use NUS OpenID</a>
+                </p>
+
+                <p class="lead">NUS OpenID allows us to get nothing other than your email address.</p>
+
+                <p class="lead">You have to manually search the modules as we cannot access your IVLE module list.</p>
+            </div>
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Available only to NUS students.</p>
+
+                    <p>Proudly brought to you by <a href="https://paperbaton.com">Paperbaton.com</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-68941435-2', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,5 +1,4 @@
-from app import app, api, storage, ivle
-
+from app import app, api, storage, ivle, oid
 from flask import session, abort, redirect, url_for, request, render_template, get_flashed_messages, flash
 from flask_restful import Resource
 from requests.exceptions import Timeout
@@ -56,8 +55,28 @@ def link(module_code):
         return redirect(url)
 
 
+@app.route("/login/openid/")
+@oid.loginhandler
+def login_oid():
+    if 'user_id' in session:
+        return redirect(oid.get_next_url())
+    return oid.try_login('https://openid.nus.edu.sg', ask_for=['email'])
+
+
+@oid.after_login
+def login_oid_succeed(resp):
+    session['user_id'] = resp.identity_url
+    redirect_urls = get_flashed_messages()
+    return redirect(redirect_urls[0] if len(redirect_urls) > 0 else url_for('base'))
+
+
 @app.route("/login/")
 def login():
+    return render_template('login.html')
+
+
+@app.route("/login/ivle/")
+def login_ivle():
     return redirect(ivle.get_ivle_login_url(url_for('login_callback', _external=True, _scheme='https')))
 
 
@@ -67,7 +86,7 @@ def login_callback():
     try:
         session['user_id'] = ivle.get_user_id(session['token'])
     except Timeout:
-        return 'IVLE is not responding, please try again later'
+        return 'IVLE is not responding, please try again later or use NUS OpenID'
     redirect_urls = get_flashed_messages()
     return redirect(redirect_urls[0] if len(redirect_urls) > 0 else url_for('base'))
 
