@@ -72,6 +72,9 @@ def login_oid_succeed(resp):
 
 @app.route("/login/")
 def login():
+    if 'user_id' in session:
+        redirect_urls = get_flashed_messages()
+        return redirect(redirect_urls[0] if len(redirect_urls) > 0 else url_for('base'))
     return render_template('login.html')
 
 
