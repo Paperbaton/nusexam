@@ -17,7 +17,7 @@ class ModuleList(Resource):
 
 class MyModules(Resource):
     def get(self):
-        if not session.get('user_id', ''):
+        if not session.get('token', ''):
             abort(403)
         return ivle.get_modules_list(session['token'])
 
